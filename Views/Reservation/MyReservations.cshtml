@@ -1,0 +1,64 @@
+@model List<Reservation>
+
+@if(Model.Any()){
+    <div class="reservation-list">
+        @foreach(var booking in Model){
+            <div class="reservation-card animate__animated animate__flipInX">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <h5 class="text-primary">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    @booking.ReservationDate.ToString("dd/MM/yyyy")
+                                </h5>
+                                <small class="text-muted">
+                                    <i class="fas fa-clock me-1"></i>
+                                    @booking.ReservationTime.ToString("HH:mm")
+                                </small>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="badge bg-info">
+                                    <i class="fas fa-chair me-1"></i>
+                                    @booking.TableNumber
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="status-badge @(booking.Status == "Confirmed" ? "bg-success" : "bg-warning")">
+                                    @booking.Status
+                                </span>
+                            </div>
+                            <div class="col-md-3 text-end">
+                                <button class="btn btn-sm btn-outline-danger" 
+                                        onclick="cancelBooking(@booking.Id)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else {
+    <div class="alert alert-info animate__bounceIn">
+        <i class="fas fa-info-circle me-2"></i>ไม่พบการจองสำหรับอีเมลนี้
+    </div>
+}
+
+<style>
+    .reservation-card {
+        transition: transform 0.3s ease;
+    }
+
+    .reservation-card:hover {
+        transform: translateX(10px);
+    }
+
+    .status-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+</style>

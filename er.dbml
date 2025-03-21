@@ -1,0 +1,11 @@
+Table RESERVATIONS {
+    int Id [pk]
+    string CustomerName
+    string Email
+    date ReservationDate
+    time ReservationTime
+    int NumberOfPeople
+    string TableNumber
+    string Status
+    datetime CreatedAt
+}

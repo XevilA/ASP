@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Admin Login";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="login-container animate__animated animate__zoomIn">
+    <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+            <div class="text-center mb-4">
+                <img src="https://img.icons8.com/fluency/96/000000/restaurant.png" 
+                     alt="Restaurant Logo"
+                     class="mb-3">
+                <h2 class="fw-bold">ระบบจัดการร้านอาหาร</h2>
+                <p class="text-muted">กรุณาเข้าสู่ระบบเพื่อจัดการการจอง</p>
+            </div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @ViewBag.Error
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">อีเมล</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="email" 
+                               name="email" 
+                               class="form-control"
+                               placeholder="example@domain.com"
+                               required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">รหัสผ่าน</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input type="password" 
+                               name="password" 
+                               class="form-control"
+                               placeholder="••••••••"
+                               required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2">
+                    <i class="fas fa-sign-in-alt me-2"></i>เข้าสู่ระบบ
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .login-container {
+        max-width: 400px;
+        margin: 5rem auto;
+        padding: 2rem;
+    }
+
+    .card {
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .input-group-text {
+        background: #fff;
+        border-right: none;
+    }
+
+    .form-control {
+        border-left: none;
+    }
+</style>
